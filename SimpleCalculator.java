@@ -1,8 +1,23 @@
 import javax.swing.*; //Provide GUI components
 import java.awt.*;
 import java.awt.event.*;
+import java.math.*;
+
 
 public class SimpleCalculator {
+    static final int max_digits = 9;
+
+    static public int digitsInCurrentNumber(String text) {
+        int count = 0;
+        for(int i = text.length() -1; i >= 0; i--){
+            char c = text.charAt(i);
+            if (Character.isDigit(c)) count ++;
+            else if (c != '.') break;
+        } 
+        return count;
+    }
+
+   
     public static void main(String args[]) {
         JFrame frame = new JFrame(); //Creating the MainFrame
 
@@ -67,39 +82,50 @@ public class SimpleCalculator {
         //Button Actions
         _0Btn.addActionListener(e ->{
             try {
-                for (int p = 1; p < 10; p++) {
-                displayField.setText("0");
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                displayField.setText(displayField.getText() + "0");
                 }
-            } catch (Exception ex) {
+            } catch (StringIndexOutOfBoundsException ex) {
+                System.out.println("You have reached the maximum number of digits!");
             }
         });
         _1Btn.addActionListener(e ->{
             try {
-                displayField.setText("1");
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                displayField.setText(displayField.getText() + "1");
+                }
             } catch (Exception ex) {
             }
         });
         _2Btn.addActionListener(e ->{
             try {
-                displayField.setText("2");
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                displayField.setText(displayField.getText() + "2");
+                }
             } catch (Exception ex) {
             }
         });
         _3Btn.addActionListener(e ->{
             try {
-                displayField.setText("3");
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                displayField.setText(displayField.getText() + "3");
+                }
             } catch (Exception ex) {
             }
         });
         _4Btn.addActionListener(e ->{
             try {
-                displayField.setText("4");
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                displayField.setText(displayField.getText() + "4");
+                }
             } catch (Exception ex) {
             }
         });
         _5Btn.addActionListener(e ->{
             try {
-                displayField.setText("5");
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                displayField.setText(displayField.getText() + "5");
+                }
             } catch (Exception ex) {
             }
         });
@@ -130,4 +156,5 @@ public class SimpleCalculator {
 
         frame.setVisible(true); 
     }
+
 }
