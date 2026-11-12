@@ -131,25 +131,79 @@ public class SimpleCalculator {
         });
         _6Btn.addActionListener(e ->{
             try {
-                displayField.setText("6");
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                displayField.setText(displayField.getText() + "6"); 
+                }
             } catch (Exception ex) {
             }
         });
         _7Btn.addActionListener(e ->{
             try {
-                displayField.setText("7");
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                displayField.setText(displayField.getText() + "7");
+                }
             } catch (Exception ex) {
             }
         });
-        _8Btn.addActionListener(e ->{});
-        _9Btn.addActionListener(e ->{});
-        _acBtn.addActionListener(e ->{});
-        equalBtn.addActionListener(e ->{});
+        _8Btn.addActionListener(e ->{
+            try {
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits) {
+                    displayField.setText(displayField.getText() + "8");
+                }
+            } catch (Exception ex) {
+            }
+        });
+        _9Btn.addActionListener(e ->{
+            try {
+                if (digitsInCurrentNumber(displayField.getText()) < max_digits){
+                    displayField.setText(displayField.getText() + "9");
+                }
+            } catch (Exception ex) {
+            }
+        });
+        _acBtn.addActionListener(e ->{
+            try {
+                    displayField.setText("");
+            } catch (Exception ex) {
+            }
+        });
+        equalBtn.addActionListener(e ->{
+            try {
+                String[] parts = displayField.getText().split("\\+");
+                double sum = 0;
+                for(String part: parts) {
+                    sum += Double.parseDouble(part.trim());
+                }
+                displayField.setText(String.valueOf(sum));
+            } catch (NumberFormatException ex) {
+                displayField.setText("Math error!");
+            }
+        });
         clearBtn.addActionListener(e ->{});
-        pointBtn.addActionListener(e ->{});
-        addBtn.addActionListener(e ->{});
-        subtractBtn.addActionListener(e ->{});
-        multBtn.addActionListener(e ->{});
+        pointBtn.addActionListener(e ->{
+            try {
+                displayField.setText(displayField.getText() + ".");
+            } catch (Exception ex) {
+            }
+        });
+        addBtn.addActionListener(e ->{
+            try {
+                displayField.setText(displayField.getText() + "+");
+            } catch (Exception ex) {
+            }
+        });
+        subtractBtn.addActionListener(e ->{
+            try {
+                displayField.setText(displayField.getText() + "-");
+            } catch (Exception ex) {
+            }
+        });
+        multBtn.addActionListener(e ->{
+            try {
+                displayField.setText(displayField.getText() + "X");
+            } catch (Exception ex) {
+            }
+        });
         divideBtn.addActionListener(e ->{});
         closeBracketBtn.addActionListener(e ->{});
         openBracketBtn.addActionListener(e ->{});
