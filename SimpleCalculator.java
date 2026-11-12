@@ -174,7 +174,7 @@ public class SimpleCalculator {
                 for(String part: parts) {
                     sum += Double.parseDouble(part.trim());
                 }
-                displayField.setText(String.valueOf(sum));
+                displayField.setText(displayField.getText() + "=" + String.valueOf(sum));
             } catch (NumberFormatException ex) {
                 displayField.setText("Math error!");
             }
